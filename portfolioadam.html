@@ -1,0 +1,673 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Zaïmi Adam — Portfolio</title>
+  <meta name="description" content="Portfolio de Zaïmi Adam : expérience, formation, compétences, engagements associatifs et contact."/>
+  <style>
+    :root{
+      /* Palette: Bleu / Noir / Doré */
+      --bg:#070a12;         /* noir bleuté */
+      --bg2:#0b1020;        /* bleu nuit */
+      --card:#0e1733;       /* cartes */
+      --muted:#a7b2d8;      /* texte secondaire */
+      --text:#eef2ff;       /* texte */
+      --blue:#2f6bff;       /* accent bleu */
+      --gold:#d4af37;       /* doré */
+      --line: rgba(255,255,255,.10);
+      --shadow: 0 14px 50px rgba(0,0,0,.45);
+      --radius: 18px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Arial;
+      color:var(--text);
+      background:
+        radial-gradient(900px 520px at 15% 10%, rgba(47,107,255,.22), transparent 60%),
+        radial-gradient(850px 520px at 85% 0%, rgba(212,175,55,.16), transparent 55%),
+        radial-gradient(900px 700px at 60% 95%, rgba(47,107,255,.10), transparent 60%),
+        linear-gradient(180deg, var(--bg), var(--bg2));
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:1100px;margin:0 auto;padding:0 20px}
+
+    .nav{
+      position:sticky;top:0;z-index:50;
+      backdrop-filter: blur(12px);
+      background: rgba(7,10,18,.60);
+      border-bottom:1px solid var(--line);
+    }
+    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:16px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:.2px}
+    .dot{
+      width:12px;height:12px;border-radius:999px;
+      background: linear-gradient(135deg, var(--blue), var(--gold));
+      box-shadow: 0 0 0 7px rgba(47,107,255,.12);
+    }
+    .links{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+    .links a{
+      color:var(--muted);
+      padding:8px 10px;border-radius:12px;
+      border:1px solid transparent;
+      transition:.2s ease;
+      font-weight:800;
+      font-size:14px;
+    }
+    .links a:hover{
+      color:var(--text);
+      border-color: var(--line);
+      background: rgba(255,255,255,.04);
+    }
+
+    .hero{
+      padding:52px 0 26px;
+      display:grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap:16px;
+      align-items:stretch;
+    }
+    @media (max-width: 900px){
+      .hero{grid-template-columns:1fr;padding-top:34px;}
+    }
+
+    .card{
+      background: rgba(14,23,51,.74);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+
+    .hero-left{padding:26px}
+    .kicker{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:8px 12px;border-radius:999px;
+      background: rgba(255,255,255,.04);
+      border:1px solid var(--line);
+      color: var(--muted);
+      font-weight:800;
+      font-size:13px;
+    }
+    .kicker .pill{
+      padding:4px 10px;border-radius:999px;
+      background: linear-gradient(135deg, rgba(47,107,255,.28), rgba(212,175,55,.18));
+      border:1px solid rgba(255,255,255,.10);
+      color: var(--text);
+      font-weight:900;
+      font-size:12px;
+    }
+
+    h1{
+      margin:14px 0 8px;
+      font-size:44px;
+      line-height:1.05;
+      letter-spacing:-.6px;
+    }
+    .subtitle{
+      margin:0;
+      color: var(--muted);
+      font-size:16px;
+      line-height:1.65;
+      max-width: 62ch;
+    }
+    .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+    .btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius: 14px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.04);
+      color: var(--text);
+      font-weight:900;
+      font-size:14px;
+      transition: .2s ease;
+      cursor:pointer;
+      user-select:none;
+    }
+    .btn.primary{
+      border: 1px solid rgba(212,175,55,.25);
+      background: linear-gradient(135deg, rgba(47,107,255,.95), rgba(212,175,55,.70));
+      box-shadow: 0 18px 55px rgba(47,107,255,.12);
+    }
+    .btn:hover{transform: translateY(-1px)}
+    .btn:active{transform: translateY(0)}
+
+    .hero-right{padding:18px;display:flex;flex-direction:column;gap:12px}
+    .profile{
+      display:flex;gap:14px;align-items:center;
+      padding:16px;
+      border-radius: 16px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+    }
+    .avatar{
+      width:92px;height:92px;border-radius:999px;
+      border: 2px solid rgba(212,175,55,.65);
+      box-shadow: 0 0 0 6px rgba(212,175,55,.10), 0 0 0 12px rgba(47,107,255,.10);
+      overflow:hidden;
+      flex: 0 0 auto;
+      background: rgba(255,255,255,.06);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .pname{font-weight:950;margin:0;font-size:16px}
+    .prole{margin:6px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+    .mini{
+      padding:16px;
+      background: rgba(255,255,255,.03);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+    }
+    .mini h3{margin:0 0 6px;font-size:14px;color:var(--muted);font-weight:900}
+    .mini p{margin:0;font-size:14px;line-height:1.5}
+
+    .badge{
+      display:inline-flex;align-items:center;gap:8px;
+      padding:7px 10px;border-radius:999px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      margin:8px 8px 0 0;
+      color: var(--muted);
+      font-weight:800;
+      font-size:12px;
+    }
+    .mono{font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;}
+
+    section{padding:22px 0}
+    .section-title{display:flex;align-items:baseline;justify-content:space-between;gap:12px;margin:6px 0 12px}
+    .section-title h2{margin:0;font-size:22px;letter-spacing:-.2px}
+    .section-title span{color:var(--muted);font-size:13px;font-weight:800}
+
+    .grid{display:grid;grid-template-columns: 1fr 1fr;gap:16px}
+    @media (max-width: 900px){ .grid{grid-template-columns:1fr;} }
+
+    .item{padding:18px}
+    .item .top{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+    .item h3{margin:0;font-size:16px}
+    .item .meta{color:var(--muted);font-size:13px;margin-top:6px;line-height:1.45}
+    .item ul{margin:12px 0 0;padding-left:18px}
+    .item li{margin:6px 0;line-height:1.55;color:rgba(238,242,255,.92)}
+
+    .tag{
+      font-size:12px;font-weight:950;
+      border-radius:999px;
+      padding:6px 10px;
+      white-space:nowrap;
+      border:1px solid rgba(255,255,255,.12);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+    }
+    .tag.gold{
+      border-color: rgba(212,175,55,.35);
+      background: rgba(212,175,55,.16);
+    }
+    .tag.blue{
+      border-color: rgba(47,107,255,.35);
+      background: rgba(47,107,255,.16);
+    }
+
+    .skills{display:flex;flex-wrap:wrap;gap:10px}
+    .skills .chip{
+      padding:10px 12px;border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: rgba(238,242,255,.95);
+      font-weight:850;font-size:13px;
+    }
+
+    .roles{
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:16px;
+    }
+    @media (max-width: 1000px){ .roles{grid-template-columns:1fr 1fr;} }
+    @media (max-width: 700px){ .roles{grid-template-columns:1fr;} }
+    .role{
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      position:relative;
+    }
+    .role::before{
+      content:"";
+      position:absolute;inset:-1px;
+      background: linear-gradient(135deg, rgba(47,107,255,.22), rgba(212,175,55,.10));
+      opacity:.20;
+      pointer-events:none;
+    }
+    .role > *{position:relative}
+    .role h3{margin:0;font-size:16px}
+    .role p{margin:0;color:var(--muted);font-size:13px;line-height:1.55}
+    .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+
+    .contact{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:16px;
+    }
+    @media (max-width: 900px){ .contact{grid-template-columns:1fr;} }
+    .form{padding:18px;display:flex;flex-direction:column;gap:10px}
+
+    input, textarea{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid var(--line);
+      background: rgba(255,255,255,.03);
+      color: var(--text);
+      outline:none;
+      font-size:14px;
+    }
+    textarea{min-height:120px;resize:vertical}
+
+    footer{
+      padding:26px 0 40px;
+      color: var(--muted);
+      font-size:13px;
+      border-top:1px solid var(--line);
+      margin-top: 18px;
+    }
+    .small{font-size:12px;color:var(--muted);line-height:1.5}
+  </style>
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav-inner">
+      <div class="logo">
+        <span class="dot"></span>
+        <span>Zaïmi Adam</span>
+      </div>
+      <nav class="links">
+        <a href="#apropos">À propos</a>
+        <a href="#experience">Expériences</a>
+        <a href="#formation">Formation</a>
+        <a href="#competences">Compétences</a>
+        <a href="#engagements">Engagements</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <!-- HERO -->
+    <div class="hero">
+      <div class="card hero-left">
+        <div class="kicker">
+          <span class="pill">Architecte</span>
+          <span>Rabat, Maroc</span>
+        </div>
+        <h1>Jeune Architecte<br/>dynamique & motivé</h1>
+        <p class="subtitle">
+          Prêt à lancer ma carrière en tant qu’employé ou stagiaire.
+          Je me distingue par ma détermination, mon écoute active, mon accessibilité
+          et ma capacité à garder une attitude positive en toute circonstance.
+        </p>
+
+        <div class="cta">
+          <a class="btn primary" href="#contact">Me contacter</a>
+          <a class="btn" href="#engagements">Voir mes engagements</a>
+          <a class="btn" href="#" id="copyEmailBtn">Copier email</a>
+        </div>
+
+        <div style="margin-top:14px;">
+          <span class="badge">📞 <span class="mono">+212 626 059 657</span></span>
+          <span class="badge">✉️ <span class="mono" id="emailText">adam00zaimi@gmail.com</span></span>
+        </div>
+        <div style="margin-top:10px;">
+          <a class="badge" href="https://www.instagram.com/zaimi_adam/" target="_blank" rel="noreferrer">Instagram</a>
+          <a class="badge" href="https://www.linkedin.com/in/adamzaimi/" target="_blank" rel="noreferrer">LinkedIn</a>
+        </div>
+      </div>
+
+      <aside class="card hero-right">
+        <div class="profile">
+          <div class="avatar" title="Photo CV">
+            <img src="adam.png" alt="Zaïmi Adam">
+          </div>
+          <div>
+            <p class="pname">Zaïmi Adam</p>
+            <p class="prole">Architecture • BIM • Rendu<br/>Leadership associatif • Communication</p>
+          </div>
+        </div>
+
+        <div class="mini">
+          <h3>Spécialités</h3>
+          <p>Conception architecturale, développement de projets, documentation & gestion administrative.</p>
+        </div>
+        <div class="mini">
+          <h3>Logiciels</h3>
+          <p class="mono">Archicad • Lumion • SketchUp • Revit • Photoshop</p>
+        </div>
+        <div class="mini">
+          <h3>Langues</h3>
+          <p>Arabe • Français • Anglais • Italien</p>
+        </div>
+      </aside>
+    </div>
+
+    <!-- A PROPOS -->
+    <section id="apropos">
+      <div class="section-title">
+        <h2>À propos</h2>
+        <span>Présentation</span>
+      </div>
+      <div class="card item">
+        <div class="top">
+          <div>
+            <h3>Qui je suis</h3>
+            <div class="meta">
+              Jeune architecte basé à Rabat, orienté résultats, avec des expériences variées (stages, freelance)
+              et une forte implication associative.
+            </div>
+          </div>
+          <span class="tag gold">Disponible : Stage / Emploi</span>
+        </div>
+
+        <div style="margin-top:12px" class="skills">
+          <span class="chip">Gestion de projets</span>
+          <span class="chip">Conception & développement</span>
+          <span class="chip">Documentation</span>
+          <span class="chip">Marketing & partenariat</span>
+          <span class="chip">Relations médiatiques</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- EXPERIENCES -->
+    <section id="experience">
+      <div class="section-title">
+        <h2>Expériences</h2>
+        <span>Stages • Freelance</span>
+      </div>
+
+      <div class="grid">
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Architecte stagiaire</h3>
+              <div class="meta">
+                Stages : JYA (M. Jemli Younes) • Moon Architecture (M. Mohammed Benhadj) • Essoulami • Plume Studio (M. Wadii Bennani)
+              </div>
+            </div>
+            <span class="tag blue">Stage</span>
+          </div>
+          <ul>
+            <li>Conception architecturale & développement de projets.</li>
+            <li>Gestion administrative, documentation et réglementation.</li>
+          </ul>
+        </div>
+
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Architecte indépendant</h3>
+              <div class="meta">Réalisations à Rabat (freelance)</div>
+            </div>
+            <span class="tag gold">Freelance</span>
+          </div>
+          <ul>
+            <li>Rénovation de la mutuelle des FAR Rabat.</li>
+            <li>Entrée du musée de l’histoire militaire à Rabat.</li>
+            <li>Gestion autonome des livrables.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- FORMATION -->
+    <section id="formation">
+      <div class="section-title">
+        <h2>Formation</h2>
+        <span>Parcours</span>
+      </div>
+
+      <div class="grid">
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Baccalauréat — Sciences mathématiques B</h3>
+              <div class="meta">Groupe scolaire Atlas, Rabat • 09/2015 – 06/2018</div>
+            </div>
+            <span class="tag">Bac</span>
+          </div>
+        </div>
+
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Classes préparatoires intégrées MPI</h3>
+              <div class="meta">INSAT, Tunis • 09/2018 – 01/2021</div>
+            </div>
+            <span class="tag">Prépa</span>
+          </div>
+        </div>
+
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Architecture (Bac+6)</h3>
+              <div class="meta">Université Internationale de Rabat • 09/2021 – 06/2027</div>
+            </div>
+            <span class="tag blue">UIR</span>
+          </div>
+        </div>
+
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Centres d’intérêt</h3>
+              <div class="meta">Sport, arts, activités</div>
+            </div>
+            <span class="tag gold">Extra</span>
+          </div>
+          <ul>
+            <li>Football américain • Basketball • Boxe anglaise</li>
+            <li>Théâtre • Danse • Jujitsu brésilien</li>
+            <li>Musique • Jeux</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMPETENCES -->
+    <section id="competences">
+      <div class="section-title">
+        <h2>Compétences</h2>
+        <span>Techniques & transversales</span>
+      </div>
+
+      <div class="grid">
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Logiciels</h3>
+              <div class="meta">Architecture • Rendu • Graphisme</div>
+            </div>
+            <span class="tag blue">Tech</span>
+          </div>
+          <div class="skills" style="margin-top:12px">
+            <span class="chip">Archicad</span>
+            <span class="chip">Lumion</span>
+            <span class="chip">SketchUp</span>
+            <span class="chip">Revit</span>
+            <span class="chip">Photoshop</span>
+            <span class="chip">Microsoft Office</span>
+          </div>
+        </div>
+
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Compétences clés</h3>
+              <div class="meta">Gestion • Communication • Partenariats</div>
+            </div>
+            <span class="tag gold">Soft</span>
+          </div>
+          <div class="skills" style="margin-top:12px">
+            <span class="chip">Gestion de projets</span>
+            <span class="chip">Relations médiatiques</span>
+            <span class="chip">Développement commercial</span>
+            <span class="chip">Marketing</span>
+            <span class="chip">Sponsoring & partenariat</span>
+            <span class="chip">Documentation & réglementation</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ENGAGEMENTS -->
+    <section id="engagements">
+      <div class="section-title">
+        <h2>Engagements associatifs & responsabilités</h2>
+        <span>Leadership • Sport • Communication</span>
+      </div>
+
+      <div class="roles">
+        <div class="card role">
+          <h3>Président — Rabat Lions</h3>
+          <p>Coordination, organisation, animation et développement de l’association.</p>
+          <div class="row">
+            <span class="badge">Leadership</span><span class="badge">Association</span>
+          </div>
+        </div>
+
+        <div class="card role">
+          <h3>Président — TheMoroccanHuddle</h3>
+          <p>Structuration des activités, gestion des équipes et dynamisation de la communauté.</p>
+          <div class="row">
+            <span class="badge">Communauté</span><span class="badge">Organisation</span>
+          </div>
+        </div>
+
+        <div class="card role">
+          <h3>Union Marocaine de Football Américain</h3>
+          <p>Responsable des activités (2022–2024) puis Directeur communication & médias (2024–2025).</p>
+          <div class="row">
+            <span class="badge">Médias</span><span class="badge">Sport</span><span class="badge">Stratégie</span>
+          </div>
+        </div>
+
+        <div class="card role">
+          <h3>Coach Defense — UIR Bulldogs</h3>
+          <p>Encadrement, préparation et développement des joueurs (discipline & performance).</p>
+          <div class="row">
+            <span class="badge">Coaching</span><span class="badge">Performance</span>
+          </div>
+        </div>
+
+        <div class="card role">
+          <h3>BDE UIR — Responsable relations externes</h3>
+          <p>Partenariats, sponsoring, coordination avec les acteurs externes (2023–2025).</p>
+          <div class="row">
+            <span class="badge">Partenariats</span><span class="badge">Sponsoring</span>
+          </div>
+        </div>
+
+        <div class="card role">
+          <h3>AEA Ambassadeurs — Événementiel & Ambassadeur</h3>
+          <p>Organisation d’événements et représentation (College ingénierie & architecture UIR).</p>
+          <div class="row">
+            <span class="badge">Événementiel</span><span class="badge">UIR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card item" style="margin-top:16px">
+        <div class="top">
+          <div>
+            <h3>Autres engagements</h3>
+            <div class="meta">Participation à des projets et initiatives</div>
+          </div>
+          <span class="tag">+ Activités</span>
+        </div>
+        <ul>
+          <li>Membre : Enactus UIR</li>
+          <li>Expérience : Responsable technico-commercial — Sitel Group (Projet Orange Belgique)</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact">
+      <div class="section-title">
+        <h2>Contact</h2>
+        <span>Discutons</span>
+      </div>
+
+      <div class="contact">
+        <div class="card item">
+          <div class="top">
+            <div>
+              <h3>Coordonnées</h3>
+              <div class="meta">Réponse rapide par email / téléphone</div>
+            </div>
+            <span class="tag gold">OK</span>
+          </div>
+
+          <ul>
+            <li>📍 Rabat, Maroc</li>
+            <li>📞 <span class="mono">+212 626 059 657</span></li>
+            <li>✉️ <span class="mono">adam00zaimi@gmail.com</span></li>
+            <li>📷 Instagram : <a href="https://www.instagram.com/zaimi_adam/" target="_blank" rel="noreferrer" style="text-decoration:underline">/zaimi_adam</a></li>
+            <li>💼 LinkedIn : <a href="https://www.linkedin.com/in/adamzaimi/" target="_blank" rel="noreferrer" style="text-decoration:underline">/in/adamzaimi</a></li>
+          </ul>
+
+          <p class="small">Tu peux ajouter un bouton “Télécharger mon CV” en mettant ton PDF dans le dossier (ex: <span class="mono">cv.pdf</span>).</p>
+        </div>
+
+        <div class="card form">
+          <h3 style="margin:0">Envoyer un message</h3>
+          <p class="small" style="margin:0 0 6px">Ce formulaire ouvre ton application mail (pas besoin de backend).</p>
+
+          <input id="name" placeholder="Ton nom" />
+          <input id="subject" placeholder="Sujet" />
+          <textarea id="message" placeholder="Ton message..."></textarea>
+
+          <button class="btn primary" id="mailtoBtn">Envoyer par email</button>
+          <span class="small" id="mailHint"></span>
+        </div>
+      </div>
+    </section>
+
+    <footer>
+      <div class="container">
+        © <span id="year"></span> HL— TOUS DROIT RESERVER . <br/>
+      </div>
+    </footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const email = "adam00zaimi@gmail.com";
+    document.getElementById("copyEmailBtn").addEventListener("click", (e) => {
+      e.preventDefault();
+      navigator.clipboard.writeText(email).then(() => {
+        const btn = document.getElementById("copyEmailBtn");
+        const old = btn.textContent;
+        btn.textContent = "Email copié ✅";
+        setTimeout(() => btn.textContent = old, 1200);
+      });
+    });
+
+    document.getElementById("mailtoBtn").addEventListener("click", () => {
+      const name = document.getElementById("name").value.trim();
+      const subject = document.getElementById("subject").value.trim() || "Contact via Portfolio";
+      const msg = document.getElementById("message").value.trim();
+
+      const full = [
+        name ? `Nom: ${name}` : "",
+        msg ? `Message:\n${msg}` : ""
+      ].filter(Boolean).join("\n\n");
+
+      window.location.href = `mailto:${email}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(full || "Bonjour,")}`;
+      document.getElementById("mailHint").textContent = "Si rien ne s’ouvre, configure une app mail par défaut sur ton PC.";
+    });
+  </script>
+</body>
+</html>
